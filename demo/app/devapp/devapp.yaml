@@ -71,9 +71,6 @@ metadata:
   name: towhichcluster
   namespace: ns-sub-1
 spec:
-  clusterConditions:
-  - type: ManagedClusterConditionAvailable
-    status: "True"
   clusterSelector:
     matchLabels:
       env: dev
