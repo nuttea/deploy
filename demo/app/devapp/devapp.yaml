@@ -37,7 +37,7 @@ metadata:
     app: nginx-app-details
 spec:
   type: HelmRepo
-  pathname: https://kubernetes-charts.storage.googleapis.com/
+  pathname: https://charts.bitnami.com/bitnami
         
 ###### Subscription yaml definition
 ---
@@ -50,9 +50,9 @@ metadata:
     app: nginx-app-details
 spec:
   channel: ns-ch/predev-ch
-  name: nginx-ingress
+  name: nginx
   packageFilter:
-    version: "1.20.0"
+    version: "1.19.1"
   placement:
     placementRef:
       kind: PlacementRule
