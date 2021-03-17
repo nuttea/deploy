@@ -52,16 +52,11 @@ spec:
   channel: ns-ch/predev-ch
   name: nginx
   packageFilter:
-    version: "1.19.1"
+    version: 8.7.0
   placement:
     placementRef:
       kind: PlacementRule
       name: towhichcluster
-  overrides:
-  - clusterName: "/"
-    clusterOverrides:
-    - path: "metadata.namespace"
-      value: default
   
 ###### PlacementRule yaml definition
 ---
@@ -75,4 +70,5 @@ spec:
   - type: ManagedClusterConditionAvailable
     status: "True"
   clusterSelector:
-    matchLabels: {}
+    matchLabels:
+      env: dev
