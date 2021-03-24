@@ -1,4 +1,20 @@
-###### Application yaml definition
+---
+  apiVersion: v1
+  kind: Namespace
+  metadata:
+    name: ns-ch
+---
+apiVersion: apps.open-cluster-management.io/v1
+kind: Channel
+metadata:
+  name: predev-ch
+  namespace: ns-ch
+  labels:
+    app: nginx-app-details
+spec:
+  type: HelmRepo
+  pathname: https://charts.bitnami.com/bitnami
+
 ---
 apiVersion: v1
 kind: Namespace
@@ -21,25 +37,6 @@ spec:
       app: nginx-app-details
 status: {}
 
-###### Channel yaml definition
----
-  apiVersion: v1
-  kind: Namespace
-  metadata:
-    name: ns-ch
----
-apiVersion: apps.open-cluster-management.io/v1
-kind: Channel
-metadata:
-  name: predev-ch
-  namespace: ns-ch
-  labels:
-    app: nginx-app-details
-spec:
-  type: HelmRepo
-  pathname: https://charts.bitnami.com/bitnami
-        
-###### Subscription yaml definition
 ---
 apiVersion: apps.open-cluster-management.io/v1
 kind: Subscription
@@ -63,7 +60,6 @@ spec:
     - path: "metadata.namespace"
       value: default
   
-###### PlacementRule yaml definition
 ---
 apiVersion: apps.open-cluster-management.io/v1
 kind: PlacementRule
