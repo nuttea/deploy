@@ -4,6 +4,23 @@
   metadata:
     name: ns-ch
 ---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: ns-sub-1
+
+---
+apiVersion: apps.open-cluster-management.io/v1
+kind: PlacementRule
+metadata:
+  name: towhichcluster
+  namespace: ns-sub-1
+spec:
+  clusterSelector:
+    matchLabels:
+      env: dev
+
+---
 apiVersion: apps.open-cluster-management.io/v1
 kind: Channel
 metadata:
@@ -15,11 +32,6 @@ spec:
   type: HelmRepo
   pathname: https://charts.bitnami.com/bitnami
 
----
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: ns-sub-1
 ---
 apiVersion: app.k8s.io/v1beta1
 kind: Application
@@ -59,14 +71,3 @@ spec:
     clusterOverrides:
     - path: "metadata.namespace"
       value: default
-  
----
-apiVersion: apps.open-cluster-management.io/v1
-kind: PlacementRule
-metadata:
-  name: towhichcluster
-  namespace: ns-sub-1
-spec:
-  clusterSelector:
-    matchLabels:
-      env: dev
