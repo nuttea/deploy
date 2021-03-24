@@ -58,7 +58,7 @@ metadata:
   labels:
     app: nginx-app-details
 spec:
-  channel: ns-ch/predev-ch
+  channel: ns-ch-1/predev-ch
   name: nginx
   packageFilter:
     version: 8.7.0
